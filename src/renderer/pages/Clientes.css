@@ -1,0 +1,175 @@
+.clientes {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 24px;
+  gap: 16px;
+}
+
+.clientes__barra {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.clientes__barra h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  white-space: nowrap;
+}
+
+.clientes__buscador {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+}
+
+.clientes__buscador:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.clientes__error {
+  padding: 10px 14px;
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.clientes__tabla-contenedor {
+  flex: 1;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.clientes__tabla {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.clientes__tabla thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.clientes__tabla th:nth-child(1) {
+  width: 26%;
+}
+
+.clientes__tabla th:nth-child(2) {
+  width: 18%;
+}
+
+.clientes__tabla th:nth-child(3) {
+  width: 18%;
+}
+
+.clientes__tabla th:nth-child(4) {
+  width: 20%;
+}
+
+.clientes__tabla th:nth-child(5) {
+  width: 18%;
+}
+
+.clientes__tabla tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--bg);
+}
+
+.clientes__tabla tbody tr:not(.clientes__fila-movimientos) {
+  cursor: pointer;
+}
+
+.clientes__tabla tbody tr:nth-child(even):not(.clientes__fila-movimientos) {
+  background: var(--accent-soft);
+}
+
+.clientes__tabla tbody tr:not(.clientes__fila-movimientos):hover {
+  background: var(--surface-hover);
+}
+
+.celda-debe {
+  color: var(--debe-ink);
+  font-weight: 600;
+}
+
+.clientes__acciones {
+  display: flex;
+  gap: 6px;
+}
+
+.clientes__vacio {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 24px !important;
+  cursor: default;
+}
+
+.clientes__fila-movimientos td {
+  background: var(--bg);
+  padding: 10px 16px !important;
+}
+
+.clientes__movimientos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.clientes__movimientos li {
+  display: flex;
+  gap: 12px;
+  font-size: 0.85rem;
+  padding: 4px 0;
+}
+
+.clientes__mov-cargo {
+  color: var(--danger-hover);
+  font-weight: 600;
+  min-width: 90px;
+}
+
+.clientes__mov-pago {
+  color: var(--success-ink);
+  font-weight: 600;
+  min-width: 90px;
+}
+
+.clientes__mov-tipo {
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  min-width: 60px;
+}
+
+.clientes__mov-fecha {
+  color: var(--ink-faint);
+  font-size: 0.78rem;
+  min-width: 80px;
+}
+
+.clientes__mov-detalle {
+  color: var(--ink-soft);
+  flex: 1;
+}
+
+.clientes__mov-notas {
+  color: var(--ink-faint);
+  font-style: italic;
+}

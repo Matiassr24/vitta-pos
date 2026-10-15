@@ -1,0 +1,250 @@
+.reportes {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 24px;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.reportes__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.reportes__barra h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  white-space: nowrap;
+}
+
+.reportes__filtros {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.reportes__filtros .campo--chico {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.reportes__filtros .campo--chico input,
+.reportes__filtros .campo--chico select {
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.reportes__aviso {
+  padding: 8px 12px;
+  background: var(--success-soft);
+  color: var(--success-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.reportes__error {
+  padding: 8px 12px;
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.reportes__tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+}
+
+/* Son tres números sueltos: no necesitan el alto que sí tienen las
+   tarjetas de Caja, y acá cada píxel de alto se lo saca a las tablas. */
+.reportes__tarjetas .tarjeta {
+  padding: 10px 14px;
+}
+
+.reportes__columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.reportes__seccion {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reportes__seccion h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.reportes__seccion-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.reportes__dias-input {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reportes__dias-input input {
+  width: 70px;
+  padding: 6px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+}
+
+/* Cada tabla scrollea adentro suyo en vez de estirarse, así una lista
+   larga no empuja al resto fuera de la pantalla. */
+.reportes__tabla-contenedor {
+  overflow: auto;
+  max-height: 240px;
+}
+
+/* La de ventas por período es la única que crece de verdad (un mes son
+   30 filas), y está arriba de todo: cada píxel que ocupa de más es un
+   píxel que les saca a los rankings de abajo. */
+.reportes__seccion--ventas .reportes__tabla-contenedor {
+  max-height: 205px;
+}
+
+.reportes__tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+}
+
+.reportes__tabla thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.reportes__tabla tbody td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--bg);
+}
+
+.reportes__tabla tbody tr:nth-child(even) {
+  background: var(--accent-soft);
+}
+
+.reportes__vacio {
+  text-align: center;
+  color: var(--ink-faint);
+  padding: 20px !important;
+}
+
+/* Selector Resumen / Reposición: dos botones pegados, el activo en verde
+   (mismo lenguaje visual que los atajos de fecha de Reposición). */
+/* El botón activo NO cambia de peso de letra a propósito: la negrita
+   ensancha el texto, y como el selector está pegado a la derecha, un
+   ancho distinto lo correría de lugar al cambiar de vista. Se distingue
+   por color y fondo. */
+.reportes__vistas {
+  display: flex;
+}
+
+.reportes__vista {
+  padding: 9px 18px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.reportes__vista:first-child {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.reportes__vista:last-child {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Los bordes se superponen (margen negativo) en vez de sumarse o
+   quitarse según cuál esté activo: así el ancho total es el mismo
+   siempre y el selector no se corre 1px al cambiar de vista. El activo
+   sube de capa para que su borde verde quede por encima del vecino. */
+.reportes__vista + .reportes__vista {
+  margin-left: -1px;
+}
+
+.reportes__vista--activa {
+  position: relative;
+  z-index: 1;
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Atajos Hoy / Esta semana / Este mes: botones pegados, el activo en
+   verde, para leer de un vistazo qué rango se está mirando. Mismo
+   lenguaje visual que el selector Resumen / Reposición. */
+.reportes__atajos {
+  display: flex;
+}
+
+.reportes__atajo {
+  padding: 9px 14px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Mismo criterio que el selector de vistas: bordes superpuestos, así el
+   ancho no depende de cuál atajo esté activo. */
+.reportes__atajo + .reportes__atajo {
+  margin-left: -1px;
+}
+
+.reportes__atajo:first-child {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.reportes__atajo:last-child {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.reportes__atajo--activo {
+  position: relative;
+  z-index: 1;
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Exportar siempre al extremo derecho de la barra, en las dos vistas. */
+.reportes__exportar {
+  margin-left: auto;
+}

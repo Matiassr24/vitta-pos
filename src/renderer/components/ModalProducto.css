@@ -1,0 +1,136 @@
+.modal-producto {
+  width: 760px;
+  padding: 16px 24px;
+}
+
+.modal-producto h2 {
+  margin-bottom: 8px;
+}
+
+.modal__formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-producto__seccion {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px 14px;
+}
+
+.modal-producto__seccion--dosCol {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* El título va pegado a su línea divisoria, y el aire queda abajo,
+   antes de los campos: así la línea y el título se leen como una sola
+   cabecera de sección, en vez de que el título parezca la etiqueta del
+   primer input. */
+.modal-producto__seccion + .modal-producto__seccion {
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+/* Más peso y más contraste que las etiquetas de los campos (que son 500
+   y --ink-soft): así el ojo distingue de una el título de sección del
+   nombre de un input. */
+.modal-producto__seccion-titulo {
+  grid-column: 1 / -1;
+  /* Suma a los 8px de gap de la grilla: 18px de aire antes de los campos. */
+  margin: 0 0 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.campo--ancho {
+  grid-column: 1 / -1;
+}
+
+.campo--dosCol {
+  grid-column: span 2;
+}
+
+.campo--bulto {
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-lg);
+  padding: 8px 12px 10px;
+  margin: 0;
+}
+
+.campo--bulto legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  padding: 0 4px;
+}
+
+/* Colapsado por defecto: un botón discreto con el mismo borde punteado
+   del fieldset que reemplaza, para que se note que ahí hay algo
+   opcional y no un dato que falta completar. */
+.modal-producto__boton-bulto {
+  border: 1px dashed var(--line-strong);
+  background: none;
+  color: var(--ink-soft);
+  padding: 8px 12px;
+}
+
+.modal-producto__boton-bulto:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.modal-producto__usar-sugerido {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modal-producto__usar-sugerido:hover {
+  color: var(--accent-hover);
+}
+
+.modal-producto__ocultar-bulto {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modal-producto__ocultar-bulto:hover {
+  color: var(--ink-soft);
+}
+
+.campo-fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+}
+
+.modal-producto__proveedor-fila {
+  display: flex;
+  gap: 6px;
+}
+
+.modal-producto__proveedor-fila select,
+.modal-producto__proveedor-fila input {
+  flex: 1;
+  min-width: 0;
+}
+
+.modal-producto__proveedor-fila .boton {
+  flex-shrink: 0;
+}

@@ -1,0 +1,112 @@
+.modal-cobro {
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-cobro__total {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--accent);
+}
+
+.modal-cobro__accesos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-cobro__vuelto {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--success-ink);
+  text-align: center;
+}
+
+.modal-cobro__filas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-cobro__filas li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Solo el primer span, que es el nombre del medio de pago. Antes esta
+   regla decía `li span` a secas, y cuando el campo de monto pasó a venir
+   envuelto en un <span> (el InputMonto) también se lo comía: el `flex: 1`
+   le ganaba al ancho fijo y el campo se estiraba. */
+.modal-cobro__filas li > span:first-child {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+/* El ancho fijo ahora vive en el envoltorio del InputMonto, que es el
+   que ocupa el lugar del input en la fila; el campo de adentro lo llena. */
+.modal-cobro__filas li .input-monto {
+  width: 120px;
+  flex: none;
+}
+
+.modal-cobro__filas li input {
+  padding: 6px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+}
+
+.modal-cobro__filas-vacio {
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+}
+
+.modal-cobro__resumen {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.modal-cobro__error {
+  padding: 8px 12px;
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.modal-cobro__cliente {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.modal-cobro__nuevo-cliente {
+  display: flex;
+  gap: 6px;
+}
+
+.modal-cobro__nuevo-cliente input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+}
+
+.modal-cobro__aviso-limite {
+  padding: 8px 12px;
+  background: var(--warn-soft);
+  color: var(--warn-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+}

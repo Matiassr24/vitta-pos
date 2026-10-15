@@ -1,0 +1,81 @@
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 26, 22, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  width: 640px;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.campo input,
+.campo select {
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.campo input:focus,
+.campo select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.campo--check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.campo__ayuda {
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+.modal__acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.boton--link {
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: 0.85rem;
+  padding: 4px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.boton--link:hover {
+  text-decoration: underline;
+}

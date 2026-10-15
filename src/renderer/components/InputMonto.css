@@ -1,0 +1,29 @@
+/* El wrapper toma el lugar que antes ocupaba el <input> en el layout
+   (item de un flex, celda de una tabla, columna de un grid), y el input
+   pasa a llenarlo. Por eso es `block` y el campo va al 100%. */
+.input-monto {
+  position: relative;
+  display: block;
+}
+
+.input-monto__signo {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  /* El click atraviesa el signo y enfoca el input que está debajo. */
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Dos clases a propósito: las pantallas fijan el padding con reglas
+   como `.campo input` o `.compras__tabla input`, que pesan más que una
+   clase sola. Con esta especificidad gana el padding-left sin recurrir
+   a !important, y el resto del padding lo sigue poniendo cada pantalla. */
+.input-monto .input-monto__campo {
+  width: 100%;
+  padding-left: 23px;
+}

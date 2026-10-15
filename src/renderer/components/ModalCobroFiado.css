@@ -1,0 +1,19 @@
+.modal-cobro-fiado {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-cobro-fiado__saldo {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.modal-cobro-fiado__error {
+  padding: 8px 12px;
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}

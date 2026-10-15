@@ -1,0 +1,37 @@
+.modal-cierre {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-cierre__esperado {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.modal-cierre__diferencia {
+  text-align: center;
+  font-weight: 600;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+
+.modal-cierre__diferencia--ok {
+  color: var(--success-ink);
+  background: var(--success-soft);
+}
+
+.modal-cierre__diferencia--mal {
+  color: var(--debe-ink);
+  background: var(--warn-soft);
+}
+
+.modal-cierre__error {
+  padding: 8px 12px;
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}

@@ -1,0 +1,256 @@
+.caja {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  height: 100%;
+  padding: 20px 24px;
+  overflow-y: auto;
+}
+
+.caja--cargando,
+.caja--apertura {
+  grid-template-columns: 1fr;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apertura-caja {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  width: 360px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.apertura-caja h2 {
+  margin: 0;
+}
+
+.apertura-caja p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.caja__resumen,
+.caja__movimientos {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  overflow-y: auto;
+}
+
+.caja__resumen h2,
+.caja__movimientos h2 {
+  margin: 0 0 14px;
+  font-size: 1.1rem;
+}
+
+.caja__resumen h3 {
+  margin: 18px 0 8px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.caja__tarjetas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* .tarjeta vive en App.css: la usan Caja y Reportes por igual. */
+
+.caja__lista-simple {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+.caja__lista-simple li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--bg);
+}
+
+.caja__detalle-extra {
+  display: flex;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 14px 0;
+}
+
+.caja__form-movimiento {
+  display: grid;
+  grid-template-columns: auto 100px 1fr auto;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.caja__form-movimiento select,
+.caja__form-movimiento input {
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.caja__error {
+  padding: 8px 12px;
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.caja__lista-movimientos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.caja__lista-movimientos li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 10px;
+  margin: 0 -10px;
+  border-bottom: 1px solid var(--bg);
+  font-size: 0.92rem;
+}
+
+/* Cada movimiento junta hora, medio de pago, monto y detalle en una
+   sola línea angosta: la alternancia ayuda a no perder la fila leyendo
+   de punta a punta. Los fiados ya tienen su propio resaltado ámbar,
+   así que quedan afuera de esta regla. */
+.caja__lista-movimientos li:nth-child(even):not(.caja__mov--fiado) {
+  background: var(--accent-soft);
+}
+
+.caja__mov--fiado {
+  background: var(--warn-soft);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px !important;
+  margin: 2px 0;
+}
+
+.caja__mov-ingreso,
+.caja__mov-egreso,
+.caja__mov-fiado-monto {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  min-width: 92px;
+  flex-shrink: 0;
+}
+
+.caja__mov-ingreso {
+  color: var(--success-ink);
+}
+
+.caja__mov-egreso {
+  color: var(--danger-hover);
+}
+
+.caja__mov-fiado-monto {
+  color: var(--warn-ink);
+}
+
+.caja__mov-concepto {
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  min-width: 74px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.caja__mov--fiado .caja__mov-concepto {
+  color: var(--warn-ink);
+}
+
+.caja__mov-detalle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.caja__mov-titulo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.caja__mov-numero {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.caja__mov-medio {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.caja__mov-descripcion {
+  color: var(--ink);
+}
+
+.caja__mov-productos {
+  color: var(--ink-faint);
+  font-size: 0.82rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.caja__mov-hora {
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.caja__vacio {
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 12px 0;
+}
+
+.caja__resumen-cierre {
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  padding-top: 12px;
+}
+
+.caja__resumen-cierre h3 {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+}
+
+.caja__resumen-cierre p {
+  margin: 2px 0;
+  font-size: 0.85rem;
+}
+
+.caja__diferencia {
+  color: var(--debe-ink);
+  font-weight: 600;
+}

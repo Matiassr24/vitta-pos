@@ -1,0 +1,555 @@
+.venta {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  height: 100%;
+}
+
+.venta--cargando,
+.venta--apertura {
+  grid-template-columns: 1fr;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apertura-caja {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  width: 360px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.apertura-caja h2 {
+  margin: 0;
+}
+
+.apertura-caja p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.venta__principal {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+  gap: 14px;
+  min-width: 0;
+}
+
+/* Pestañas de venta: una franja de recuadros tipo navegador, así se
+   entiende de una que son ventas independientes navegables, no un
+   filtro ni un menú. La activa se "funde" con el contenido de abajo
+   (mismo fondo blanco, sin borde inferior) para leerse como la que
+   está abierta ahora mismo. */
+.venta__pestañas {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  overflow-x: auto;
+}
+
+.venta__pestaña {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-bottom: none;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  padding: 2px 4px 2px 4px;
+}
+
+.venta__pestaña--activa {
+  background: var(--surface);
+  border-color: var(--accent);
+}
+
+.venta__pestaña-boton {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.venta__pestaña--activa .venta__pestaña-boton {
+  color: var(--accent);
+}
+
+.venta__pestaña-total {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+
+.venta__pestaña-cerrar {
+  padding: 3px 7px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.venta__pestaña-cerrar:hover {
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+}
+
+/* Confirmación de cerrar una pestaña con productos cargados: mismo
+   criterio de dos clicks que "Desactivar"/"Borrar" en Productos, no
+   un solo click que pueda tirar una venta a medio armar sin querer. */
+.venta__pestaña-cerrar--confirmar {
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 8px;
+}
+
+.venta__pestaña-nueva {
+  align-self: center;
+  width: 28px;
+  height: 28px;
+  margin-left: 2px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.venta__pestaña-nueva:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.venta__buscador-contenedor {
+  position: relative;
+}
+
+.venta__buscador {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1.05rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+}
+
+.venta__buscador:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.venta__resultados {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 20;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+}
+
+.venta__resultados li button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.venta__resultados li button:hover {
+  background: var(--bg);
+}
+
+.venta__promos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.venta__promo-boton {
+  padding: 8px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-lg);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.venta__promo-boton:hover {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+.venta__promo-boton--mas {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  border-color: var(--line-strong);
+}
+
+.venta__promo-boton--mas:hover {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.venta__promos-mas-contenedor {
+  position: relative;
+}
+
+.venta__promos-buscador {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 280px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 20;
+  padding: 8px;
+}
+
+.venta__promos-buscador input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+}
+
+.venta__promos-buscador input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.venta__promos-buscador ul {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.venta__promos-buscador li button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 0.88rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.venta__promos-buscador li button:hover {
+  background: var(--bg);
+}
+
+.venta__promos-buscador-vacio {
+  padding: 10px;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+}
+
+.venta__promo-titulo {
+  font-weight: 600;
+}
+
+/* Los productos que componen la promo, en chico y debajo del nombre:
+   sirven para confirmar qué se está llevando, pero sin precio propio
+   —el reparto interno de $16.800 + $4.200 confunde más de lo que
+   explica, el cliente compró "una promo a $21.000". */
+.venta__promo-detalle {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.venta__etiqueta-promo {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.venta__tabla-contenedor {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.venta__ticket {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.venta__ticket thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.venta__ticket tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--bg);
+}
+
+.venta__ticket tbody tr:nth-child(even) {
+  background: var(--accent-soft);
+}
+
+.venta__input-cantidad {
+  width: 70px;
+  padding: 5px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+}
+
+/* "g" / "ml" al lado del campo: sin esto, un 200 suelto en la columna
+   de cantidad se puede leer como 200 kilos. */
+.venta__unidad-cantidad {
+  margin-left: 5px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.venta__aviso-stock {
+  margin-left: 8px;
+  font-size: 0.72rem;
+  color: var(--debe-ink);
+  font-weight: 600;
+}
+
+/* Botoncito en vez del enlace subrayado que había antes: se lee como
+   algo que se puede apretar, sin robarle protagonismo al aviso. */
+.venta__corregir-stock {
+  margin-left: 8px;
+  padding: 2px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.venta__corregir-stock:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.venta__vacio {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 32px !important;
+}
+
+/* Ámbar, no rojo: no es un error de la cajera, es el sistema avisando
+   que le falta información de stock. */
+.venta__sin-stock {
+  padding: 10px 14px;
+  background: var(--warn-soft);
+  color: var(--warn-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+}
+
+.venta__sin-stock-texto {
+  margin: 0 0 8px;
+}
+
+.venta__sin-stock-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.venta__sin-stock-form input {
+  width: 110px;
+  padding: 6px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.venta__sin-stock-form input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.venta__sin-stock-error {
+  margin: 8px 0 0;
+  color: var(--danger-ink);
+  font-weight: 600;
+}
+
+.venta__mensaje {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  background: var(--success-soft);
+  color: var(--success-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.venta__barra-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+}
+
+.venta__check-ticket {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.venta__total {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.boton--grande {
+  padding: 14px 28px;
+  font-size: 1.05rem;
+}
+
+.venta__lateral {
+  background: var(--surface);
+  border-left: 1px solid var(--line);
+  padding: 20px 16px;
+  overflow-y: auto;
+}
+
+.venta__lateral h3 {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+}
+
+.venta__recientes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.venta__recientes li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.venta__reciente--anulada {
+  opacity: 0.5;
+}
+
+.venta__reciente-id {
+  color: var(--ink-soft);
+  min-width: 34px;
+}
+
+.venta__reciente-total {
+  flex: 1;
+  font-weight: 600;
+}
+
+.venta__estado-anulada {
+  font-size: 0.75rem;
+  color: var(--danger-hover);
+}
+
+.venta__anular-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.venta__anular-form input {
+  padding: 6px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.venta__anular-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}

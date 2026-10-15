@@ -1,0 +1,22 @@
+# Dependencias
+node_modules/
+
+# Build
+dist/
+out/
+release/
+
+# Base de datos y backups: NUNCA al repo (tienen datos reales del negocio)
+*.db
+*.db-wal
+*.db-shm
+backups/
+
+# Entorno
+.env
+.env.local
+
+# Sistema
+.DS_Store
+Thumbs.db
+_scaffold_tmp/

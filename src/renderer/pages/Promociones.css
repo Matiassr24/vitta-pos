@@ -1,0 +1,104 @@
+.promociones {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 24px;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.promociones__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.promociones__barra h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.promociones__error {
+  padding: 10px 14px;
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.promociones__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  align-content: start;
+}
+
+.promociones__tarjeta {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.promociones__tarjeta--inactiva {
+  opacity: 0.5;
+}
+
+.promociones__tarjeta-cabecera {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.promociones__tarjeta-cabecera h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.promociones__precio {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.promociones__items {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+.promociones__ahorro {
+  margin: 0;
+  color: var(--success-ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.promociones__ahorro-negativo {
+  margin: 0;
+  color: var(--danger-ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.promociones__acciones {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.promociones__vacio {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}

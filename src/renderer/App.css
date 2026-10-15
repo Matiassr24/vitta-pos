@@ -1,0 +1,403 @@
+/* Tipografías auto-alojadas (sin depender de internet: la app corre
+   100% offline). Solo el subset "latin" — cubre español con tildes,
+   ñ, ¿ ¡ — que es lo único que necesita esta app. */
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/plus-jakarta-sans-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./assets/fonts/plus-jakarta-sans-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./assets/fonts/plus-jakarta-sans-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./assets/fonts/plus-jakarta-sans-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/ibm-plex-mono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./assets/fonts/ibm-plex-mono-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./assets/fonts/ibm-plex-mono-600.woff2') format('woff2');
+}
+
+:root {
+  color-scheme: light;
+
+  /* Superficies */
+  --bg: #f6f7f6;
+  --surface: #ffffff;
+  --surface-hover: #eff3f1;
+
+  /* Texto */
+  --ink: #182220;
+  --ink-soft: #5b6a65;
+  --ink-faint: #93a29d;
+
+  /* Acento (Vidriera: teal, cálido y profesional) */
+  --accent: #16776b;
+  --accent-hover: #125f56;
+  --accent-soft: #e1f2ec;
+
+  /* Líneas */
+  --line: #e2e7e4;
+  --line-strong: #cdd5d1;
+
+  /* Semánticos — deliberadamente distintos del acento */
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --danger-ink: #991b1b;
+  --danger-soft: #fee2e2;
+
+  --success-ink: #166534;
+  --success-soft: #dcfce7;
+
+  --warn-ink: #92400e;
+  --warn-soft: #fef3c7;
+  --debe-ink: #b45309;
+
+  /* Forma */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 3px rgba(20, 40, 35, 0.07);
+  --shadow-md: 0 6px 18px rgba(22, 119, 107, 0.16);
+
+  /* Tipografía */
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  font-family: var(--font-sans);
+
+  /* Tiñe de verde los controles que dibuja el navegador (tildes de los
+     checkboxes, selección de texto), que por defecto salen azules. */
+  accent-color: var(--accent);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* Las flechitas nativas de los inputs numéricos suman/restan de a
+   "step" sin que se note, y terminan en valores raros con un click
+   sin querer. Se sacan en toda la app; para sumar/restar de a uno
+   están los <select> o los botones +/- explícitos donde hace falta. */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* Los <select> nativos venían con la flecha y el resaltado azul del
+   sistema operativo, que desentonaba con el verde y las esquinas
+   redondeadas del resto. Se les saca la apariencia nativa y se dibuja
+   la flecha como fondo (SVG embebido, sin archivo aparte para no
+   agregar un pedido más al arranque).
+   La primera versión de esta flecha (gris clarito, 12x8px) quedaba
+   casi invisible contra el borde — a simple vista un select no se
+   distinguía de un input de texto (reportado por la dueña usando la
+   app real, 2026-08-20). Se agranda, se oscurece al color del texto
+   normal (no el --ink-soft, muy parecido al borde) y se le agrega un
+   separador vertical propio: así se lee como un control con una
+   por alto. */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--surface);
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke='%23182220' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' d='M1 1.5 7 7.5 13 1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  /* Deja lugar a la flecha, así el texto largo no la pisa. */
+  padding-right: 34px !important;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+select:hover {
+  border-color: var(--line-strong);
+}
+
+/* La lista desplegada la dibuja Chromium: no se puede estilar entera,
+   pero sí el fondo de cada opción y cuál está elegida. */
+select option {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+select option:checked {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Tarjeta de número suelto — la usan el resumen de Caja y el de
+   Reportes, por eso vive acá y no en la CSS de una pantalla sola. */
+.tarjeta {
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tarjeta__etiqueta {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  /* --ink-soft y no --ink-faint: en letra chica y mayúsculas, el gris
+     más claro quedaba en 2,5 de contraste contra el fondo de la
+     tarjeta, por debajo de lo legible. */
+  color: var(--ink-soft);
+}
+
+.tarjeta__valor {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.tarjeta__ayuda {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  line-height: 1.35;
+}
+
+/* El color de una tarjeta dice QUÉ TIPO de número es, no adorna: verde
+   es plata que quedó a favor, ámbar es plata que salió del cajón pero
+   no se perdió (mercadería), rojo es pérdida, y el verde de la app
+   marca el número operativo del día. Tonos suaves a propósito: esto se
+   mira todo el día en el mostrador. */
+.tarjeta--acento {
+  background: var(--accent-soft);
+}
+
+.tarjeta--acento .tarjeta__valor,
+.tarjeta--acento .tarjeta__etiqueta {
+  color: var(--accent);
+}
+
+.tarjeta--exito {
+  background: var(--success-soft);
+}
+
+.tarjeta--exito .tarjeta__valor,
+.tarjeta--exito .tarjeta__etiqueta {
+  color: var(--success-ink);
+}
+
+.tarjeta--aviso {
+  background: var(--warn-soft);
+}
+
+.tarjeta--aviso .tarjeta__valor,
+.tarjeta--aviso .tarjeta__etiqueta {
+  color: var(--warn-ink);
+}
+
+.tarjeta--aviso .tarjeta__ayuda {
+  color: var(--warn-ink);
+  opacity: 0.8;
+}
+
+.tarjeta--perdida {
+  background: var(--danger-soft);
+}
+
+.tarjeta--perdida .tarjeta__valor,
+.tarjeta--perdida .tarjeta__etiqueta {
+  color: var(--danger-ink);
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 22px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.app-nav__boton {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.app-nav__boton svg {
+  flex-shrink: 0;
+}
+
+.app-nav__boton:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.app-nav__boton--activo {
+  background: var(--accent);
+  color: white;
+}
+
+/* Corta el grupo de uso diario (Venta/Caja/Productos/Compras) del
+   ocasional (Reportes/Clientes/Usuarios) — no solo el orden, que se
+   note de un vistazo. */
+.app-nav__separador {
+  width: 1px;
+  align-self: stretch;
+  margin: 6px 8px;
+  background: var(--line);
+}
+
+.app-nav__boton--activo:hover {
+  background: var(--accent-hover);
+  color: white;
+}
+
+.app-nav__usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.app-nav__usuario-nombre {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.app-shell--cargando {
+  background: var(--bg);
+}
+
+.app-contenido {
+  flex: 1;
+  overflow: hidden;
+}
+
+.boton {
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.boton:hover {
+  background: var(--surface-hover);
+}
+
+.boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.boton--primario {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  white-space: nowrap;
+}
+
+.boton--primario:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.boton--chico {
+  padding: 5px 12px;
+  font-size: 0.8rem;
+}
+
+/* Cerrar sesión se ve neutro (no es una acción destructiva ni frecuente),
+   pero al pasar el mouse avisa en rojo que saca a la persona del sistema. */
+.boton--salir:hover {
+  background: var(--danger-soft);
+  border-color: var(--danger);
+  color: var(--danger-ink);
+}
+
+.boton--peligro {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
+
+.boton--peligro:hover {
+  background: var(--danger-hover);
+  border-color: var(--danger-hover);
+}

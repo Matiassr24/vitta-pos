@@ -1,0 +1,95 @@
+.reposicion__tarjetas {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+}
+
+.reposicion__tarjetas .tarjeta__valor {
+  font-size: 1.5rem;
+}
+
+.reposicion__aviso-costo {
+  padding: 10px 14px;
+  background: var(--warn-soft);
+  color: var(--warn-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+}
+
+.reposicion__categoria-titulo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.reposicion__categoria-totales {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.reposicion__categoria-totales strong {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.reposicion__separador {
+  margin: 0 8px;
+  color: var(--ink-faint);
+}
+
+.reposicion__sin-costo {
+  margin-left: 8px;
+  padding: 1px 7px;
+  border-radius: var(--radius-sm);
+  background: var(--warn-soft);
+  color: var(--warn-ink);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* Mismo criterio que en Productos: stock en o por debajo del mínimo. */
+.reposicion__stock-bajo {
+  color: var(--danger-ink);
+  font-weight: 600;
+}
+
+.reposicion__vacio {
+  text-align: center;
+  color: var(--ink-faint);
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+/* Una tabla por categoría: sin esto cada una reparte el ancho según SU
+   contenido (un nombre largo le da más lugar a Producto y corre todo lo
+   demás) y las columnas no quedan alineadas de una categoría a la
+   siguiente. Con ancho fijo, "Vendido", "Stock hoy", etc. caen siempre
+   en la misma posición. Producto se queda con lo que sobra. */
+.reposicion__tabla {
+  table-layout: fixed;
+}
+
+.reposicion__tabla th:nth-child(2),
+.reposicion__tabla th:nth-child(3) {
+  width: 14%;
+}
+
+.reposicion__tabla th:nth-child(4),
+.reposicion__tabla th:nth-child(5) {
+  width: 17%;
+}
+
+/* Con ancho fijo, un nombre muy largo no estira la columna: se parte en
+   otra línea en vez de pisar a la siguiente. */
+.reposicion__tabla td:first-child {
+  overflow-wrap: anywhere;
+}

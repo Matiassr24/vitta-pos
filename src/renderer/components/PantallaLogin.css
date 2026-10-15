@@ -1,0 +1,126 @@
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.login__tarjeta {
+  width: 380px;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login__titulo {
+  margin: 0 0 4px;
+  font-size: 1.6rem;
+  color: var(--accent);
+  text-align: center;
+}
+
+.login__subtitulo {
+  margin: 0 0 14px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.login__usuarios {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login__usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.login__usuario:hover {
+  background: var(--surface-hover);
+  border-color: var(--line-strong);
+}
+
+.login__usuario-icono {
+  display: flex;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.login__usuario-nombre {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.login__usuario-rol {
+  margin-left: auto;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.login__cargando {
+  text-align: center;
+  color: var(--ink-faint);
+  padding: 12px 0;
+}
+
+.login__form-pin {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login__form-pin input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1.3rem;
+  letter-spacing: 0.3em;
+  text-align: center;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+}
+
+.login__form-pin input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.login__form-pin-botones {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.login__form-pin-botones .boton {
+  flex: 1;
+}
+
+.login__error {
+  margin-top: 14px;
+  padding: 8px 12px;
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  text-align: center;
+}

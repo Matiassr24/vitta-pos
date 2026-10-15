@@ -1,0 +1,184 @@
+.productos {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 24px;
+  gap: 16px;
+}
+
+.productos__barra {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.productos__barra h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  white-space: nowrap;
+}
+
+.productos__buscador {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+}
+
+.productos__buscador:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.productos__aviso {
+  padding: 10px 14px;
+  background: var(--success-soft);
+  color: var(--success-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.productos__error {
+  padding: 10px 14px;
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.productos__toggle-inactivos {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.productos__filtros {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 12px 16px;
+}
+
+.productos__filtros .campo--chico {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.productos__filtros .campo--chico select {
+  padding: 7px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  color: var(--ink);
+  /* background-color y no el atajo "background": el atajo borraría la
+     flecha que App.css pone como background-image. */
+  background-color: var(--surface);
+}
+
+.productos__filtros .campo--chico select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.productos__filtro-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  padding-bottom: 7px;
+}
+
+/* Empuja el conteo y el botón de limpiar contra el borde derecho, para
+   que los filtros en sí queden agrupados a la izquierda. */
+.productos__conteo {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  padding-bottom: 8px;
+}
+
+.productos__filtros .boton--chico {
+  margin-bottom: 3px;
+}
+
+.productos__confirmar {
+  display: flex;
+  gap: 6px;
+}
+
+.productos__tabla-contenedor {
+  flex: 1;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.productos__tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.productos__tabla thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.productos__tabla tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--bg);
+}
+
+.productos__tabla tbody tr {
+  cursor: pointer;
+}
+
+/* Alternancia clara/oscura para no perderse leyendo una fila angosta a
+   lo ancho de una tabla larga. */
+.productos__tabla tbody tr:nth-child(even) {
+  background: var(--accent-soft);
+}
+
+.productos__tabla tbody tr:hover {
+  background: var(--surface-hover);
+}
+
+.fila-inactiva {
+  opacity: 0.45;
+}
+
+.fila-destacada {
+  background: var(--success-soft) !important;
+}
+
+/* Un rojo apagado a propósito: llama la atención sin gritar "error". */
+.celda-alerta {
+  color: var(--danger-hover);
+  font-weight: 600;
+}
+
+.productos__vacio {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 24px !important;
+  cursor: default;
+}

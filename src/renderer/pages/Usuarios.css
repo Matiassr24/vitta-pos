@@ -1,0 +1,139 @@
+.usuarios {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 24px;
+  gap: 16px;
+}
+
+.usuarios__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.usuarios__barra h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.usuarios__error {
+  padding: 10px 14px;
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.usuarios__tabla-contenedor {
+  flex: 1;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.usuarios__tabla {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.usuarios__tabla thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.usuarios__tabla th:nth-child(1) {
+  width: 32%;
+}
+
+.usuarios__tabla th:nth-child(2) {
+  width: 22%;
+}
+
+.usuarios__tabla th:nth-child(3) {
+  width: 18%;
+}
+
+.usuarios__tabla th:nth-child(4) {
+  width: 14%;
+}
+
+.usuarios__tabla th:nth-child(5) {
+  width: 14%;
+}
+
+.usuarios__tabla tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--bg);
+}
+
+.usuarios__tabla tbody tr:nth-child(even) {
+  background: var(--accent-soft);
+}
+
+.usuarios__fila--inactivo {
+  opacity: 0.5;
+}
+
+.usuarios__acciones {
+  display: flex;
+  gap: 6px;
+}
+
+.usuarios__vacio {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 24px !important;
+}
+
+.usuarios__backup {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.usuarios__backup h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.usuarios__backup-ayuda {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.usuarios__backup-carpeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.usuarios__backup-carpeta span {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.usuarios__backup-botones {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
