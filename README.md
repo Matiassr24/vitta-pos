@@ -4,9 +4,7 @@ Aplicación de escritorio para **comercios minoristas** (polirrubros, kioscos, a
 
 Nació para resolver la gestión diaria de un polirrubro real, donde **se usa todos los días**, y está pensada para adaptarse a cualquier negocio minorista.
 
-<!-- Agregar capturas con DATOS DE EJEMPLO (nada del negocio real) en docs/capturas/ y descomentar:
-![Pantalla de venta](docs/capturas/venta.png)
--->
+![Pantalla de venta: buscador, promociones de acceso rápido y ventas del día](docs/capturas/venta.png)
 
 ## Funcionalidades
 
@@ -18,6 +16,19 @@ Nació para resolver la gestión diaria de un polirrubro real, donde **se usa to
 - **Promociones**, **usuarios con login** y **reportes** de ventas, ganancia y reposición por categoría.
 - **Excel:** importación masiva de productos y exportación de reportes.
 - **Backup automático** de la base de datos al cerrar la aplicación.
+
+## Capturas
+
+| | |
+|---|---|
+| ![Caja: resumen del día, efectivo esperado y movimientos](docs/capturas/caja.png) | ![Productos: costo, margen, precio sugerido y stock](docs/capturas/productos.png) |
+| **Caja:** efectivo esperado, facturación y ganancia del día | **Productos:** costo, margen, precio sugerido y stock mínimo |
+| ![Reportes: ventas por día, más vendidos y productos parados](docs/capturas/reportes.png) | ![Reposición: plata a separar por categoría](docs/capturas/reposicion.png) |
+| **Reportes:** más vendidos, más rentables y productos parados | **Reposición:** cuánto separar para reponer lo vendido |
+| ![Promociones con ahorro calculado](docs/capturas/promociones.png) | |
+| **Promociones:** combos con el ahorro calculado | |
+
+<sub>Capturas tomadas de una base de prueba.</sub>
 
 ## Stack
 
